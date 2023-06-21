@@ -28,6 +28,8 @@
     background-color: rgba(179, 170, 164, 0.315);
     border-radius: 20px;
     border: 1px solid white;
+    box-sizing: border-box;
+   
     
 }
 .box{
@@ -35,6 +37,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    width:100%;
+    aspect-ratio: 1/1;
 
 }
 .box-1,.box-2,.box-4,.box-5,.box-7,.box-8
