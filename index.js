@@ -43,6 +43,10 @@ function clicked(index)
         }
         
         playerInfo.innerText=`Current Player - ${currentPlayer}`
+        if(!resetButton.classList.contains("active"))
+        {
+            resetButton.classList.add("active");
+        }
         check();
         
     }
@@ -68,16 +72,16 @@ resetButton.addEventListener("click",()=>{
 function check(){
 
    let won;
-
     winner.forEach(winningposition=>{
 
 
     if((gameGrid[winningposition[0]]===gameGrid[winningposition[1]])  &&    (gameGrid[winningposition[1]]===gameGrid[winningposition[2]])    &&    (gameGrid[winningposition[0]]!==""))
         {
-            if(gameGrid[winningposition[0]] === "X") 
-                    won = "X";
+            win=1;
+            if(gameGrid[winningposition[0]] == "O") 
+                    won = "O";
             else 
-                    won= "O";
+                    won= "X";
 
 
             // if someone won then no actions
@@ -91,9 +95,7 @@ function check(){
             boxlist[winningposition[1]].classList.add("win");
             boxlist[winningposition[2]].classList.add("win");
  
-
-            resetButton.classList.add("active");
-            playerInfo.innerText=`${currentPlayer} Won`;
+            playerInfo.innerText=`${won} Won`;
         
         }
     });
@@ -106,8 +108,8 @@ function check(){
     });
 
     //board is Filled, game is TIE
-    if(fillCount === 9) {
+    if(fillCount === 9 && won=="") {
         playerInfo.innerText = "Game Tied !";
-        resetButton.classList.add("active");
+        
     }
 }
